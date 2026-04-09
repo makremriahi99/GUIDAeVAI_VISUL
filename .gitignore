@@ -1,0 +1,5 @@
+.env
+__pycache__/
+*.pyc
+output/reviews.json
+output/analysis_result.json

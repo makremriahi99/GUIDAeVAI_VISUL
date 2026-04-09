@@ -1,0 +1,100 @@
+{
+  "sentiment_per_tema": {
+    "bug_tecnici": {
+      "positivo": 7,
+      "negativo": 47,
+      "sintesi": "L'app presenta numerosi bug e malfunzionamenti, in particolare dopo gli aggiornamenti, risultando poco funzionale per gli utenti."
+    },
+    "ux_design": {
+      "positivo": 14,
+      "negativo": 20,
+      "sintesi": "Nonostante alcuni utenti trovino l'interfaccia grafica bella e intuitiva, molti hanno segnalato una scarsa usabilità dopo gli ultimi aggiornamenti."
+    },
+    "contenuti_quiz": {
+      "positivo": 24,
+      "negativo": 12,
+      "sintesi": "I contenuti dei quiz sono molto apprezzati e considerati utili per la preparazione, con un feedback positivo predominante."
+    },
+    "performance": {
+      "positivo": 7,
+      "negativo": 22,
+      "sintesi": "Le prestazioni dell'app sono state criticate con frequenza, in particolare in merito a lentezza e blocchi sporadici."
+    },
+    "soddisfazione_generale": {
+      "positivo": 51,
+      "negativo": 29,
+      "sintesi": "Nonostante i problemi tecnici, la maggior parte degli utenti esprime soddisfazione generale per l'app e il suo aiuto nello studio."
+    }
+  },
+  "top5_problemi": [
+    {
+      "rank": 1,
+      "problema": "bug e malfunzionamenti dell'app",
+      "impatto": "alto",
+      "citazione": "dopo l'ultimo aggiornamento, l'app non funziona più."
+    },
+    {
+      "rank": 2,
+      "problema": "perdita di progressi",
+      "impatto": "alto",
+      "citazione": "ho appena aggiornato l'app ed ho perso tutti i progressi."
+    },
+    {
+      "rank": 3,
+      "problema": "Problemi di stabilità dell'app dopo l'ultimo aggiornamento",
+      "impatto": "alto",
+      "citazione": "L'ultimo aggiornamento ha peggiorato tantissimo l'app per nessun motivo."
+    },
+    {
+      "rank": 4,
+      "problema": "Funzionalità di statistica e progressi non funzionanti",
+      "impatto": "medio",
+      "citazione": "Con il nuovo aggiornamento ho perso tutti i progressi che avevo fatto."
+    },
+    {
+      "rank": 5,
+      "problema": "difficoltà nella registrazione",
+      "impatto": "basso",
+      "citazione": "non si riesce a fare la registrazione tramite email cancellata subito."
+    }
+  ],
+  "top3_punti_forza": [
+    {
+      "rank": 1,
+      "forza": "utilità dei contenuti",
+      "citazione": "questa app è molto utile per prepararsi."
+    },
+    {
+      "rank": 2,
+      "forza": "soddisfazione generale degli utenti",
+      "citazione": "consigliatissima!"
+    },
+    {
+      "rank": 3,
+      "forza": "facilità d'uso",
+      "citazione": "app estremamente intuitiva."
+    }
+  ],
+  "suggerimenti_prodotto": [
+    {
+      "priorita": 1,
+      "azione": "Risoluzione dei bug presenti nell'ultima versione dell'app.",
+      "motivazione": "Ridurre i malfunzionamenti e migliorare l'esperienza utente.",
+      "impatto_atteso": "Aumento della soddisfazione degli utenti e riduzione delle recensioni negative."
+    },
+    {
+      "priorita": 2,
+      "azione": "Implementare un sistema di assistenza clienti più reattivo.",
+      "motivazione": "Migliorare l'assistenza post-vendita e gestire meglio le problematiche segnalate.",
+      "impatto_atteso": "Aumentare la fiducia degli utenti nell'app e migliorare il supporto."
+    },
+    {
+      "priorita": 3,
+      "azione": "Ottimizzazione della funzionalità di salvataggio progressi.",
+      "motivazione": "Evitare la perdita di dati e mantenere l'engagement degli utenti.",
+      "impatto_atteso": "Maggiore retention degli utenti e minori segnalazioni di malfunzionamenti."
+    }
+  ],
+  "rating_medio": 3.93,
+  "totale_recensioni_analizzate": 200
+}

@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Recensioni — Quiz Patente Guida e Vai</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f9;
+            color: #1a1a2e;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 { font-size: 1.8rem; }
+        header p  { opacity: 0.7; margin-top: 6px; font-size: 0.9rem; }
+
+        .badge {
+            background: #e94560;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        /* ── KPI ── */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .kpi-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .kpi-card .number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #e94560;
+        }
+
+        .kpi-card .label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 6px;
+        }
+
+        /* ── SEZIONI ── */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 .icon {
+            width: 36px; height: 36px;
+            background: #f0f4ff;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        /* ── SENTIMENT TEMI ── */
+        .tema-row {
+            margin-bottom: 18px;
+        }
+
+        .tema-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .tema-name { font-weight: 600; text-transform: capitalize; }
+
+        .bar-container {
+            background: #f0f0f0;
+            border-radius: 50px;
+            height: 10px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .bar-pos { background: #2ecc71; height: 100%; transition: width 0.5s; }
+        .bar-neg { background: #e94560; height: 100%; transition: width 0.5s; }
+
+        .tema-sintesi {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* ── PROBLEMI ── */
+        .problema-card {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 16px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .problema-card:last-child { border-bottom: none; }
+
+        .rank-badge {
+            min-width: 36px; height: 36px;
+            border-radius: 50%;
+            background: #e94560;
+            color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.9rem;
+        }
+
+        .problema-body h3 { font-size: 0.95rem; margin-bottom: 4px; }
+
+        .problema-body .citazione {
+            font-size: 0.82rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .impatto {
+            margin-left: auto;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .impatto.alto   { background: #fde8ec; color: #e94560; }
+        .impatto.medio  { background: #fff3e0; color: #e67e22; }
+        .impatto.basso  { background: #e8f5e9; color: #27ae60; }
+
+        /* ── PUNTI DI FORZA ── */
+        .forza-card {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid #f0f0f0;
+            align-items: flex-start;
+        }
+
+        .forza-card:last-child { border-bottom: none; }
+
+        .forza-icon {
+            min-width: 36px; height: 36px;
+            border-radius: 50%;
+            background: #e8f5e9;
+            color: #27ae60;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .forza-body h3 { font-size: 0.95rem; margin-bottom: 4px; }
+        .forza-body .citazione { font-size: 0.82rem; color: #888; font-style: italic; }
+
+        /* ── SUGGERIMENTI ── */
+        .suggerimento-card {
+            border-left: 4px solid #e94560;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            background: #fafafa;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .suggerimento-card .priorita {
+            font-size: 0.75rem;
+            color: #e94560;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .suggerimento-card h3 { font-size: 0.95rem; margin-bottom: 6px; }
+
+        .suggerimento-card p {
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .suggerimento-card .impatto-atteso {
+            font-size: 0.8rem;
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #aaa;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <h1>📊 Report Analisi Recensioni</h1>
+        <p>Quiz Patente Ufficiale — Guida e Vai &nbsp;|&nbsp; Generato il 09/04/2026 22:52</p>
+    </div>
+    <div class="badge">200 recensioni analizzate</div>
+</header>
+
+<div class="container">
+
+    <!-- KPI -->
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div class="number">3.93</div>
+            <div class="label">⭐ Rating medio (su 5)</div>
+        </div>
+        <div class="kpi-card">
+            <div class="number">200</div>
+            <div class="label">📝 Recensioni analizzate</div>
+        </div>
+        <div class="kpi-card">
+            <div class="number">5</div>
+            <div class="label">🔴 Problemi identificati</div>
+        </div>
+    </div>
+
+    <!-- SENTIMENT PER TEMA -->
+    <div class="section">
+        <h2><span class="icon">📈</span> Sentiment per Tema</h2>
+        
+        
+        
+        
+        <div class="tema-row">
+            <div class="tema-header">
+                <span class="tema-name">bug tecnici</span>
+                <span style="color:#888; font-size:0.82rem;">
+                    ✅ 7 positivi &nbsp;|&nbsp; ❌ 47 negativi
+                </span>
+            </div>
+            <div class="bar-container">
+                <div class="bar-pos" style="width: 13.0%"></div>
+                <div class="bar-neg" style="width: 87.0%"></div>
+            </div>
+            
+            <div class="tema-sintesi">L'app presenta numerosi bug e malfunzionamenti, in particolare dopo gli aggiornamenti, risultando poco funzionale per gli utenti.</div>
+            
+        </div>
+        
+        
+        
+        
+        <div class="tema-row">
+            <div class="tema-header">
+                <span class="tema-name">ux design</span>
+                <span style="color:#888; font-size:0.82rem;">
+                    ✅ 14 positivi &nbsp;|&nbsp; ❌ 20 negativi
+                </span>
+            </div>
+            <div class="bar-container">
+                <div class="bar-pos" style="width: 41.0%"></div>
+                <div class="bar-neg" style="width: 59.0%"></div>
+            </div>
+            
+            <div class="tema-sintesi">Nonostante alcuni utenti trovino l'interfaccia grafica bella e intuitiva, molti hanno segnalato una scarsa usabilità dopo gli ultimi aggiornamenti.</div>
+            
+        </div>
+        
+        
+        
+        
+        <div class="tema-row">
+            <div class="tema-header">
+                <span class="tema-name">contenuti quiz</span>
+                <span style="color:#888; font-size:0.82rem;">
+                    ✅ 24 positivi &nbsp;|&nbsp; ❌ 12 negativi
+                </span>
+            </div>
+            <div class="bar-container">
+                <div class="bar-pos" style="width: 67.0%"></div>
+                <div class="bar-neg" style="width: 33.0%"></div>
+            </div>
+            
+            <div class="tema-sintesi">I contenuti dei quiz sono molto apprezzati e considerati utili per la preparazione, con un feedback positivo predominante.</div>
+            
+        </div>
+        
+        
+        
+        
+        <div class="tema-row">
+            <div class="tema-header">
+                <span class="tema-name">performance</span>
+                <span style="color:#888; font-size:0.82rem;">
+                    ✅ 7 positivi &nbsp;|&nbsp; ❌ 22 negativi
+                </span>
+            </div>
+            <div class="bar-container">
+                <div class="bar-pos" style="width: 24.0%"></div>
+                <div class="bar-neg" style="width: 76.0%"></div>
+            </div>
+            
+            <div class="tema-sintesi">Le prestazioni dell'app sono state criticate con frequenza, in particolare in merito a lentezza e blocchi sporadici.</div>
+            
+        </div>
+        
+        
+        
+        
+        <div class="tema-row">
+            <div class="tema-header">
+                <span class="tema-name">soddisfazione generale</span>
+                <span style="color:#888; font-size:0.82rem;">
+                    ✅ 51 positivi &nbsp;|&nbsp; ❌ 29 negativi
+                </span>
+            </div>
+            <div class="bar-container">
+                <div class="bar-pos" style="width: 64.0%"></div>
+                <div class="bar-neg" style="width: 36.0%"></div>
+            </div>
+            
+            <div class="tema-sintesi">Nonostante i problemi tecnici, la maggior parte degli utenti esprime soddisfazione generale per l'app e il suo aiuto nello studio.</div>
+            
+        </div>
+        
+    </div>
+
+    <!-- TOP 5 PROBLEMI -->
+    <div class="section">
+        <h2><span class="icon">🔴</span> Top 5 Problemi Ricorrenti</h2>
+        
+        <div class="problema-card">
+            <div class="rank-badge">1</div>
+            <div class="problema-body">
+                <h3>bug e malfunzionamenti dell'app</h3>
+                <div class="citazione">"dopo l'ultimo aggiornamento, l'app non funziona più."</div>
+            </div>
+            <div class="impatto alto">ALTO</div>
+        </div>
+        
+        <div class="problema-card">
+            <div class="rank-badge">2</div>
+            <div class="problema-body">
+                <h3>perdita di progressi</h3>
+                <div class="citazione">"ho appena aggiornato l'app ed ho perso tutti i progressi."</div>
+            </div>
+            <div class="impatto alto">ALTO</div>
+        </div>
+        
+        <div class="problema-card">
+            <div class="rank-badge">3</div>
+            <div class="problema-body">
+                <h3>Problemi di stabilità dell'app dopo l'ultimo aggiornamento</h3>
+                <div class="citazione">"L'ultimo aggiornamento ha peggiorato tantissimo l'app per nessun motivo."</div>
+            </div>
+            <div class="impatto alto">ALTO</div>
+        </div>
+        
+        <div class="problema-card">
+            <div class="rank-badge">4</div>
+            <div class="problema-body">
+                <h3>Funzionalità di statistica e progressi non funzionanti</h3>
+                <div class="citazione">"Con il nuovo aggiornamento ho perso tutti i progressi che avevo fatto."</div>
+            </div>
+            <div class="impatto medio">MEDIO</div>
+        </div>
+        
+        <div class="problema-card">
+            <div class="rank-badge">5</div>
+            <div class="problema-body">
+                <h3>difficoltà nella registrazione</h3>
+                <div class="citazione">"non si riesce a fare la registrazione tramite email cancellata subito."</div>
+            </div>
+            <div class="impatto basso">BASSO</div>
+        </div>
+        
+    </div>
+
+    <!-- TOP 3 PUNTI DI FORZA -->
+    <div class="section">
+        <h2><span class="icon">✅</span> Top 3 Punti di Forza</h2>
+        
+        <div class="forza-card">
+            <div class="forza-icon">⭐</div>
+            <div class="forza-body">
+                <h3>utilità dei contenuti</h3>
+                <div class="citazione">"questa app è molto utile per prepararsi."</div>
+            </div>
+        </div>
+        
+        <div class="forza-card">
+            <div class="forza-icon">⭐</div>
+            <div class="forza-body">
+                <h3>soddisfazione generale degli utenti</h3>
+                <div class="citazione">"consigliatissima!"</div>
+            </div>
+        </div>
+        
+        <div class="forza-card">
+            <div class="forza-icon">⭐</div>
+            <div class="forza-body">
+                <h3>facilità d'uso</h3>
+                <div class="citazione">"app estremamente intuitiva."</div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- SUGGERIMENTI PRODOTTO -->
+    <div class="section">
+        <h2><span class="icon">💡</span> Suggerimenti per il Product Manager</h2>
+        
+        <div class="suggerimento-card">
+            <div class="priorita">Priorità 1</div>
+            <h3>Risoluzione dei bug presenti nell'ultima versione dell'app.</h3>
+            <p>Ridurre i malfunzionamenti e migliorare l'esperienza utente.</p>
+            <div class="impatto-atteso">→ Aumento della soddisfazione degli utenti e riduzione delle recensioni negative.</div>
+        </div>
+        
+        <div class="suggerimento-card">
+            <div class="priorita">Priorità 2</div>
+            <h3>Implementare un sistema di assistenza clienti più reattivo.</h3>
+            <p>Migliorare l'assistenza post-vendita e gestire meglio le problematiche segnalate.</p>
+            <div class="impatto-atteso">→ Aumentare la fiducia degli utenti nell'app e migliorare il supporto.</div>
+        </div>
+        
+        <div class="suggerimento-card">
+            <div class="priorita">Priorità 3</div>
+            <h3>Ottimizzazione della funzionalità di salvataggio progressi.</h3>
+            <p>Evitare la perdita di dati e mantenere l'engagement degli utenti.</p>
+            <div class="impatto-atteso">→ Maggiore retention degli utenti e minori segnalazioni di malfunzionamenti.</div>
+        </div>
+        
+    </div>
+
+</div>
+
+<footer>
+    Report generato automaticamente · 09/04/2026 22:52 · Dati da App Store e Google Play
+</footer>
+
+</body>
+</html>
