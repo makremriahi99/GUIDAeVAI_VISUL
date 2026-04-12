@@ -1,100 +1,100 @@
 {
   "sentiment_per_tema": {
     "bug_tecnici": {
-      "positivo": 7,
-      "negativo": 47,
-      "sintesi": "L'app presenta numerosi bug e malfunzionamenti, in particolare dopo gli aggiornamenti, risultando poco funzionale per gli utenti."
+      "positivo": 11,
+      "negativo": 70,
+      "sintesi": "I bug e i malfunzionamenti sono predominanti, con un forte impatto negativo sulle recensioni."
     },
     "ux_design": {
-      "positivo": 14,
-      "negativo": 20,
-      "sintesi": "Nonostante alcuni utenti trovino l'interfaccia grafica bella e intuitiva, molti hanno segnalato una scarsa usabilità dopo gli ultimi aggiornamenti."
+      "positivo": 26,
+      "negativo": 40,
+      "sintesi": "La nuova interfaccia riceve elogi, ma ci sono significative critiche riguardo alla sua usabilità e ai pop-up invasivi."
     },
     "contenuti_quiz": {
-      "positivo": 24,
-      "negativo": 12,
-      "sintesi": "I contenuti dei quiz sono molto apprezzati e considerati utili per la preparazione, con un feedback positivo predominante."
+      "positivo": 59,
+      "negativo": 26,
+      "sintesi": "I contenuti dei quiz sono ben valutati, con molte recensioni che evidenziano la loro efficacia."
     },
     "performance": {
-      "positivo": 7,
-      "negativo": 22,
-      "sintesi": "Le prestazioni dell'app sono state criticate con frequenza, in particolare in merito a lentezza e blocchi sporadici."
+      "positivo": 13,
+      "negativo": 38,
+      "sintesi": "Le prestazioni dell'app sono problematiche, con frequenti report di blocchi e difficoltà di accesso."
     },
     "soddisfazione_generale": {
-      "positivo": 51,
-      "negativo": 29,
-      "sintesi": "Nonostante i problemi tecnici, la maggior parte degli utenti esprime soddisfazione generale per l'app e il suo aiuto nello studio."
+      "positivo": 114,
+      "negativo": 54,
+      "sintesi": "Nonostante i problemi, molti utenti esprimono un alto livello di soddisfazione generale."
     }
   },
   "top5_problemi": [
     {
       "rank": 1,
-      "problema": "bug e malfunzionamenti dell'app",
+      "problema": "Problemi tecnici e bug nell'app",
       "impatto": "alto",
-      "citazione": "dopo l'ultimo aggiornamento, l'app non funziona più."
+      "citazione": "Il bug è stato risolto con il nuovo aggiornamento è inutilizzabile."
     },
     {
       "rank": 2,
-      "problema": "perdita di progressi",
-      "impatto": "alto",
-      "citazione": "ho appena aggiornato l'app ed ho perso tutti i progressi."
-    },
-    {
-      "rank": 3,
-      "problema": "Problemi di stabilità dell'app dopo l'ultimo aggiornamento",
+      "problema": "Aggiornamento ha peggiorato l'esperienza",
       "impatto": "alto",
       "citazione": "L'ultimo aggiornamento ha peggiorato tantissimo l'app per nessun motivo."
     },
     {
+      "rank": 3,
+      "problema": "Malfunzionamento dopo aggiornamenti",
+      "impatto": "alto",
+      "citazione": "Dopo l'ultimo aggiornamento, l'app non funziona più."
+    },
+    {
       "rank": 4,
-      "problema": "Funzionalità di statistica e progressi non funzionanti",
+      "problema": "Difficoltà nella registrazione e accesso",
       "impatto": "medio",
-      "citazione": "Con il nuovo aggiornamento ho perso tutti i progressi che avevo fatto."
+      "citazione": "App scandalosa non si riesce a fare la registrazione tramite email cancellata subito."
     },
     {
       "rank": 5,
-      "problema": "difficoltà nella registrazione",
-      "impatto": "basso",
-      "citazione": "non si riesce a fare la registrazione tramite email cancellata subito."
+      "problema": "Pubblicità invadente",
+      "impatto": "medio",
+      "citazione": "La pubblicità durante gli esami è inconcepibile, disinstallato subito."
     }
   ],
   "top3_punti_forza": [
     {
       "rank": 1,
-      "forza": "utilità dei contenuti",
-      "citazione": "questa app è molto utile per prepararsi."
+      "forza": "Efficacia delle spiegazioni dei quiz",
+      "citazione": "Grazie a questa app ho superato l'esame con 0 errori ❤️"
     },
     {
       "rank": 2,
-      "forza": "soddisfazione generale degli utenti",
-      "citazione": "consigliatissima!"
+      "forza": "Utilità per la preparazione all'esame",
+      "citazione": "Superato l'esame di teoria con 0 errori."
     },
     {
       "rank": 3,
-      "forza": "facilità d'uso",
-      "citazione": "app estremamente intuitiva."
+      "forza": "Qualità dei contenuti e spiegazioni",
+      "citazione": "Ottima l'ho consigliata a tutti i miei amici."
     }
   ],
   "suggerimenti_prodotto": [
     {
       "priorita": 1,
-      "azione": "Risoluzione dei bug presenti nell'ultima versione dell'app.",
-      "motivazione": "Ridurre i malfunzionamenti e migliorare l'esperienza utente.",
-      "impatto_atteso": "Aumento della soddisfazione degli utenti e riduzione delle recensioni negative."
+      "azione": "Risolvere i bug e i malfunzionamenti",
+      "motivazione": "I bug attuali stanno influenzando negativamente l'esperienza utente.",
+      "impatto_atteso": "Miglioramento significativo della soddisfazione degli utenti."
     },
     {
       "priorita": 2,
-      "azione": "Implementare un sistema di assistenza clienti più reattivo.",
-      "motivazione": "Migliorare l'assistenza post-vendita e gestire meglio le problematiche segnalate.",
-      "impatto_atteso": "Aumentare la fiducia degli utenti nell'app e migliorare il supporto."
+      "azione": "Rendere i pop-up meno invasivi",
+      "motivazione": "L'invasività dei pop-up è stata criticata da molti utenti.",
+      "impatto_atteso": "Aumento della user experience e della soddisfazione."
     },
     {
       "priorita": 3,
-      "azione": "Ottimizzazione della funzionalità di salvataggio progressi.",
-      "motivazione": "Evitare la perdita di dati e mantenere l'engagement degli utenti.",
-      "impatto_atteso": "Maggiore retention degli utenti e minori segnalazioni di malfunzionamenti."
+      "azione": "Migliorare la performance post-aggiornamento",
+      "motivazione": "Molti utenti segnalano difficoltà nell'accesso e nell'uso dell'app dopo gli aggiornamenti.",
+      "impatto_atteso": "Maggiore stabilità e miglior accesso per gli utenti."
     }
   ],
-  "rating_medio": 3.93,
-  "totale_recensioni_analizzate": 200
+  "rating_medio": 3.98,
+  "totale_recensioni_analizzate": 400
 }

@@ -478,7 +478,7 @@
         <img src="https://guidaevai.com/wp-content/uploads/2026/03/Loghi_guida_e_Vai-05-scaled.png"
              alt="Guida e Vai" class="navbar__logo">
         <span class="navbar__title">Report Analisi Recensioni</span>
-        <span class="navbar__date">Generato il: 12/04/2026 01:52</span>
+        <span class="navbar__date">Generato il: {{ data_generazione }}</span>
     </div>
 </nav>
 
@@ -492,7 +492,7 @@
             Analisi delle <span class="accent">Recensioni</span> degli Utenti
         </h1>
         <p class="section-subtitle animate-in delay-2">
-            Basato su 400 recensioni Google Play Store · April 2026
+            Basato su {{ totale }} recensioni Google Play Store · {{ mese_anno }}
         </p>
     </div>
 </section>
@@ -505,22 +505,22 @@
         <div class="kpi-grid">
             <div class="card kpi-card animate-in delay-1">
                 <span class="kpi-icon">⭐</span>
-                <div class="kpi-value">3.98</div>
-                <div class="kpi-stars">★★★★☆</div>
+                <div class="kpi-value">{{ rating_medio }}</div>
+                <div class="kpi-stars">{{ stelle }}</div>
                 <div class="kpi-label">Rating Medio</div>
                 <div class="kpi-sublabel">su 5.0 — Google Play Store</div>
             </div>
             <div class="card kpi-card animate-in delay-2">
                 <span class="kpi-icon">📈</span>
-                <div class="kpi-value">67.9%</div>
+                <div class="kpi-value">{{ perc_positive }}%</div>
                 <div class="kpi-label">Recensioni Positive</div>
                 <div class="kpi-sublabel">sentiment positivo rilevato</div>
             </div>
             <div class="card kpi-card animate-in delay-3">
                 <span class="kpi-icon">⚠️</span>
-                <div class="kpi-value" style="font-size:28px; color:var(--color-red);">Bug Tecnici</div>
+                <div class="kpi-value" style="font-size:28px; color:var(--color-red);">{{ tema_critico_nome }}</div>
                 <div class="kpi-label">Tema Più Critico</div>
-                <div class="kpi-sublabel">86% di sentiment negativo</div>
+                <div class="kpi-sublabel">{{ tema_critico_perc }}% di sentiment negativo</div>
             </div>
         </div>
     </div>
@@ -539,77 +539,21 @@
             Come gli utenti percepiscono ogni aspetto dell'app, in base alle recensioni analizzate.
         </p>
         <div class="card animate-in delay-3" style="padding:32px;">
-            
+            {% for tema in temi_sentiment %}
             <div class="sentiment-row">
-                <div class="sentiment-label">Bug Tecnici</div>
+                <div class="sentiment-label">{{ tema.label }}</div>
                 <div class="sentiment-bar-container">
-                    <div class="sentiment-segment sentiment-segment--positive" style="width:14%;">14%</div>
-                    <div class="sentiment-segment sentiment-segment--neutral" style="width:0%;"></div>
-                    <div class="sentiment-segment sentiment-segment--negative" style="width:86%;">86%</div>
+                    <div class="sentiment-segment sentiment-segment--positive" style="width:{{ tema.pct_pos }}%;">{% if tema.pct_pos >= 8 %}{{ tema.pct_pos }}%{% endif %}</div>
+                    <div class="sentiment-segment sentiment-segment--neutral" style="width:{{ tema.pct_neu }}%;"></div>
+                    <div class="sentiment-segment sentiment-segment--negative" style="width:{{ tema.pct_neg }}%;">{% if tema.pct_neg >= 8 %}{{ tema.pct_neg }}%{% endif %}</div>
                 </div>
                 <div class="sentiment-percentages">
-                    <span class="sentiment-pct--pos">14%</span>
-                    <span class="sentiment-pct--neu">0%</span>
-                    <span class="sentiment-pct--neg">86%</span>
+                    <span class="sentiment-pct--pos">{{ tema.pct_pos }}%</span>
+                    <span class="sentiment-pct--neu">{{ tema.pct_neu }}%</span>
+                    <span class="sentiment-pct--neg">{{ tema.pct_neg }}%</span>
                 </div>
             </div>
-            
-            <div class="sentiment-row">
-                <div class="sentiment-label">UX / Design</div>
-                <div class="sentiment-bar-container">
-                    <div class="sentiment-segment sentiment-segment--positive" style="width:39%;">39%</div>
-                    <div class="sentiment-segment sentiment-segment--neutral" style="width:0%;"></div>
-                    <div class="sentiment-segment sentiment-segment--negative" style="width:61%;">61%</div>
-                </div>
-                <div class="sentiment-percentages">
-                    <span class="sentiment-pct--pos">39%</span>
-                    <span class="sentiment-pct--neu">0%</span>
-                    <span class="sentiment-pct--neg">61%</span>
-                </div>
-            </div>
-            
-            <div class="sentiment-row">
-                <div class="sentiment-label">Contenuti Quiz</div>
-                <div class="sentiment-bar-container">
-                    <div class="sentiment-segment sentiment-segment--positive" style="width:69%;">69%</div>
-                    <div class="sentiment-segment sentiment-segment--neutral" style="width:0%;"></div>
-                    <div class="sentiment-segment sentiment-segment--negative" style="width:31%;">31%</div>
-                </div>
-                <div class="sentiment-percentages">
-                    <span class="sentiment-pct--pos">69%</span>
-                    <span class="sentiment-pct--neu">0%</span>
-                    <span class="sentiment-pct--neg">31%</span>
-                </div>
-            </div>
-            
-            <div class="sentiment-row">
-                <div class="sentiment-label">Performance</div>
-                <div class="sentiment-bar-container">
-                    <div class="sentiment-segment sentiment-segment--positive" style="width:25%;">25%</div>
-                    <div class="sentiment-segment sentiment-segment--neutral" style="width:0%;"></div>
-                    <div class="sentiment-segment sentiment-segment--negative" style="width:75%;">75%</div>
-                </div>
-                <div class="sentiment-percentages">
-                    <span class="sentiment-pct--pos">25%</span>
-                    <span class="sentiment-pct--neu">0%</span>
-                    <span class="sentiment-pct--neg">75%</span>
-                </div>
-            </div>
-            
-            <div class="sentiment-row">
-                <div class="sentiment-label">Soddisfazione</div>
-                <div class="sentiment-bar-container">
-                    <div class="sentiment-segment sentiment-segment--positive" style="width:68%;">68%</div>
-                    <div class="sentiment-segment sentiment-segment--neutral" style="width:0%;"></div>
-                    <div class="sentiment-segment sentiment-segment--negative" style="width:32%;">32%</div>
-                </div>
-                <div class="sentiment-percentages">
-                    <span class="sentiment-pct--pos">68%</span>
-                    <span class="sentiment-pct--neu">0%</span>
-                    <span class="sentiment-pct--neg">32%</span>
-                </div>
-            </div>
-            
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -621,78 +565,26 @@
     <div class="container">
         <span class="pill-label animate-in">PROBLEMI RICORRENTI</span>
         <h2 class="section-title animate-in delay-1">
-            I <span class="accent">5 problemi</span> più ricorrenti
+            I <span class="accent">{{ problemi|length }} problemi</span> più ricorrenti
         </h2>
         <p class="section-subtitle animate-in delay-2">
             Classificati per impatto sugli utenti e frequenza nelle recensioni.
         </p>
         <div class="problems-grid">
-            
-            <div class="card problem-card animate-in delay-2">
-                <div class="problem-rank">01</div>
+            {% for p in problemi %}
+            <div class="card problem-card animate-in delay-{{ loop.index + 1 }}">
+                <div class="problem-rank">{{ '%02d' % p.rank }}</div>
                 <div class="problem-content">
                     <div class="problem-title">
-                        Problemi tecnici e bug nell'app
-                        <span class="badge badge--severity-alto">Impatto Alto</span>
+                        {{ p.problema }}
+                        <span class="badge badge--severity-{{ p.impatto }}">Impatto {{ p.impatto|capitalize }}</span>
                     </div>
                     <div class="problem-quote">
-                        "Il bug è stato risolto con il nuovo aggiornamento è inutilizzabile."
+                        "{{ p.citazione }}"
                     </div>
                 </div>
             </div>
-            
-            <div class="card problem-card animate-in delay-3">
-                <div class="problem-rank">02</div>
-                <div class="problem-content">
-                    <div class="problem-title">
-                        Aggiornamento ha peggiorato l'esperienza
-                        <span class="badge badge--severity-alto">Impatto Alto</span>
-                    </div>
-                    <div class="problem-quote">
-                        "L'ultimo aggiornamento ha peggiorato tantissimo l'app per nessun motivo."
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card problem-card animate-in delay-4">
-                <div class="problem-rank">03</div>
-                <div class="problem-content">
-                    <div class="problem-title">
-                        Malfunzionamento dopo aggiornamenti
-                        <span class="badge badge--severity-alto">Impatto Alto</span>
-                    </div>
-                    <div class="problem-quote">
-                        "Dopo l'ultimo aggiornamento, l'app non funziona più."
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card problem-card animate-in delay-5">
-                <div class="problem-rank">04</div>
-                <div class="problem-content">
-                    <div class="problem-title">
-                        Difficoltà nella registrazione e accesso
-                        <span class="badge badge--severity-medio">Impatto Medio</span>
-                    </div>
-                    <div class="problem-quote">
-                        "App scandalosa non si riesce a fare la registrazione tramite email cancellata subito."
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card problem-card animate-in delay-6">
-                <div class="problem-rank">05</div>
-                <div class="problem-content">
-                    <div class="problem-title">
-                        Pubblicità invadente
-                        <span class="badge badge--severity-medio">Impatto Medio</span>
-                    </div>
-                    <div class="problem-quote">
-                        "La pubblicità durante gli esami è inconcepibile, disinstallato subito."
-                    </div>
-                </div>
-            </div>
-            
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -710,31 +602,15 @@
             Gli aspetti più citati positivamente nelle recensioni.
         </p>
         <div class="strengths-grid">
-            
-            <div class="card card--strength strength-card animate-in delay-3">
+            {% for f in forze %}
+            <div class="card card--strength strength-card animate-in delay-{{ loop.index + 2 }}">
                 <div class="strength-icon">✓</div>
-                <div class="strength-title">Efficacia delle spiegazioni dei quiz</div>
+                <div class="strength-title">{{ f.forza }}</div>
                 <div class="strength-quote">
-                    "Grazie a questa app ho superato l'esame con 0 errori ❤️"
+                    "{{ f.citazione }}"
                 </div>
             </div>
-            
-            <div class="card card--strength strength-card animate-in delay-4">
-                <div class="strength-icon">✓</div>
-                <div class="strength-title">Utilità per la preparazione all'esame</div>
-                <div class="strength-quote">
-                    "Superato l'esame di teoria con 0 errori."
-                </div>
-            </div>
-            
-            <div class="card card--strength strength-card animate-in delay-5">
-                <div class="strength-icon">✓</div>
-                <div class="strength-title">Qualità dei contenuti e spiegazioni</div>
-                <div class="strength-quote">
-                    "Ottima l'ho consigliata a tutti i miei amici."
-                </div>
-            </div>
-            
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -752,43 +628,19 @@
             Azioni prioritizzate per migliorare l'esperienza utente e il rating dell'app.
         </p>
         <div class="recs-grid">
-            
-            
-            <div class="card rec-card animate-in delay-2">
+            {% for s in suggerimenti %}
+            {% set p_index = s.priorita - 1 %}
+            <div class="card rec-card animate-in delay-{{ loop.index + 1 }}">
                 <div class="rec-badge-col">
-                    <span class="badge badge--p0">P0</span>
+                    <span class="badge badge--p{{ p_index }}">P{{ p_index }}</span>
                 </div>
                 <div class="rec-content">
-                    <div class="rec-title">Risolvere i bug e i malfunzionamenti</div>
-                    <div class="rec-description">I bug attuali stanno influenzando negativamente l'esperienza utente.</div>
-                    <div class="rec-impact">Impatto atteso: Miglioramento significativo della soddisfazione degli utenti.</div>
+                    <div class="rec-title">{{ s.azione }}</div>
+                    <div class="rec-description">{{ s.motivazione }}</div>
+                    <div class="rec-impact">Impatto atteso: {{ s.impatto_atteso }}</div>
                 </div>
             </div>
-            
-            
-            <div class="card rec-card animate-in delay-3">
-                <div class="rec-badge-col">
-                    <span class="badge badge--p1">P1</span>
-                </div>
-                <div class="rec-content">
-                    <div class="rec-title">Rendere i pop-up meno invasivi</div>
-                    <div class="rec-description">L'invasività dei pop-up è stata criticata da molti utenti.</div>
-                    <div class="rec-impact">Impatto atteso: Aumento della user experience e della soddisfazione.</div>
-                </div>
-            </div>
-            
-            
-            <div class="card rec-card animate-in delay-4">
-                <div class="rec-badge-col">
-                    <span class="badge badge--p2">P2</span>
-                </div>
-                <div class="rec-content">
-                    <div class="rec-title">Migliorare la performance post-aggiornamento</div>
-                    <div class="rec-description">Molti utenti segnalano difficoltà nell'accesso e nell'uso dell'app dopo gli aggiornamenti.</div>
-                    <div class="rec-impact">Impatto atteso: Maggiore stabilità e miglior accesso per gli utenti.</div>
-                </div>
-            </div>
-            
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -816,7 +668,7 @@
                 </div>
                 <div class="methodology-item">
                     <strong>Dimensione campione</strong>
-                    400 recensioni analizzate
+                    {{ totale }} recensioni analizzate
                 </div>
                 <div class="methodology-item">
                     <strong>Modello AI</strong>
@@ -824,7 +676,7 @@
                 </div>
                 <div class="methodology-item">
                     <strong>Data generazione</strong>
-                    12/04/2026 01:52
+                    {{ data_generazione }}
                 </div>
                 <div class="methodology-item">
                     <strong>Temi analizzati</strong>

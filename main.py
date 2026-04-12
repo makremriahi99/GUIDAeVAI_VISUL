@@ -18,11 +18,11 @@ def main():
     print_step(1, "RACCOLTA RECENSIONI")
 
     print("\n📱 Google Play Store...")
-    play_reviews = get_play_store_reviews(200)
+    play_reviews = get_play_store_reviews(400)
     print(f"   → {len(play_reviews)} recensioni raccolte")
 
     # print("🍎 App Store...")
-    # apple_reviews = get_app_store_reviews(200)
+    # apple_reviews = get_app_store_reviews(400)
     # print(f"   → {len(apple_reviews)} recensioni raccolte")
     apple_reviews = []  # Temporaneamente disabilitato a causa di problemi con la libreria
 

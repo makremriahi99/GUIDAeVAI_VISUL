@@ -30,10 +30,10 @@ def get_app_store_reviews(count=200):
 # ── SALVA TUTTO ───────────────────────────────────────────
 if __name__ == "__main__":
     print("Scaricando recensioni Google Play...")
-    play = get_play_store_reviews(200)
+    play = get_play_store_reviews(400)
     
     print("Scaricando recensioni App Store...")
-    apple = get_app_store_reviews(200)
+    apple = get_app_store_reviews(400)
     
     all_reviews = play + apple
     
